@@ -1,6 +1,6 @@
 {
   "name": "mysql-update-query-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simplify MySQL record updates with targeted precision using the mysql-update-query-builder library.",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,13 @@
     "type": "git",
     "url": "https://github.com/jawad-shaikh/mysql-update-query-builder.git"
   },
-  "keywords": ["mysql", "update", "query", "builder", "javascript"],
+  "keywords": [
+    "mysql",
+    "update",
+    "query",
+    "builder",
+    "javascript"
+  ],
   "author": "Jawad Shaikh",
   "license": "MIT",
   "bugs": {
