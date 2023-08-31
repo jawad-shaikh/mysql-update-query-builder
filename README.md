@@ -31,7 +31,7 @@ console.log(updateQuery); // UPDATE users SET username = 'ali', age = 55 WHERE i
 
 ## Methods
 
-- update(table)
+- `update(table)`
 
 Initialize the query with the specified table for the UPDATE operation.
 
@@ -39,20 +39,39 @@ Initialize the query with the specified table for the UPDATE operation.
 
 Returns the mysqlUpdate object for method chaining.
 
-- set(body)
+- `set(body, filter)`
 
 Specify the columns and values to be updated in the query.
 
 `body` (Object): An object containing the columns and values to be updated.
-Returns the mysqlUpdate object for method chaining.
 
-- where(identifier)
+`filter` (Object, optional): An optional filter configuration object with properties like `ignore` and `add` to customize column updates. If provided, the `ignore` property should be an array of column names that you want to exclude from the update, and the `add` property should be an array of column names that you want only to include in the update.
+
+For example, if you have a `body` object with several columns and you only want to update specific columns while ignoring others, you can use the `filter` parameter to achieve that. Here's how you can use it:
+
+```js
+const body = { username: "ali", age: 55, email: "ali@example.com" };
+
+const filter = {
+    ignore: ["age", "email"], // Columns to ignore during update
+};
+
+// OR
+
+const filter = {
+    add: ["username", "age"] // Columns to only include for update
+};
+
+const updateQuery = mysqlUpdate.update("users").set(body, filter).where({ id: 1 }).build();
+
+
+- `where(identifier)`
 
 Specify the condition for the WHERE clause in the query.
 
 `identifier` (Object): An object representing the condition for the WHERE clause.
 
-- build()
+- `build()`
 
 Returns the complete query string.
 
