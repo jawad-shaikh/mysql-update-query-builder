@@ -6,7 +6,17 @@ const mysqlUpdate = {
         return this;
     },
 
-    set: function (body) {
+    set: function (body, ignore, add) {
+        if (ignore) {
+            body = Object.fromEntries(
+                Object.entries(body).filter(([key, val]) => !ignore.includes(key))
+            );
+        } else {
+            body = Object.fromEntries(
+                Object.entries(body).filter(([key, val]) => add.includes(key))
+            );
+        }
+
         this.query += Object
             .entries(body)
             .map(([key, value]) => {
